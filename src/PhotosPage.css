@@ -1,0 +1,221 @@
+.photos-page {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  padding: 24px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
+}
+
+/* ---------- Header ---------- */
+.photos-header {
+  width: min(96vw, 860px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 26, 94, 0.25);
+}
+
+.photos-header h2 {
+  flex: 1;
+  font-size: clamp(13px, 3vw, 17px);
+  color: #ff1a5e;
+  text-shadow: 0 0 10px rgba(255, 26, 94, 0.7);
+  letter-spacing: 0.14em;
+  font-weight: normal;
+  text-align: center;
+}
+
+.back-btn {
+  border: 1px solid rgba(255, 26, 94, 0.45);
+  padding: 8px 16px;
+  border-radius: 2px;
+  background: rgba(255, 26, 94, 0.07);
+  color: rgba(255, 100, 150, 0.8);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  letter-spacing: 0.07em;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.back-btn:hover {
+  background: rgba(255, 26, 94, 0.15);
+  color: #ff1a5e;
+  border-color: #ff1a5e;
+  box-shadow: 0 0 12px rgba(255, 26, 94, 0.3);
+}
+
+/* ---------- Grid ---------- */
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: min(96vw, 860px);
+  margin-bottom: 28px;
+}
+
+@media (max-width: 600px) {
+  .photos-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
+/* ---------- Photo card ---------- */
+.photo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.photo-frame {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid rgba(255, 26, 94, 0.35);
+  background: rgba(6, 0, 12, 0.9);
+  position: relative;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.photo-card:hover .photo-frame {
+  border-color: rgba(255, 26, 94, 0.9);
+  box-shadow: 0 0 20px rgba(255, 26, 94, 0.45), 0 0 40px rgba(255, 26, 94, 0.15);
+  transform: translateY(-3px);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.85) contrast(1.05);
+  transition: filter 0.25s;
+}
+
+.photo-card:hover .photo-frame img {
+  filter: saturate(1.1) contrast(1.1);
+}
+
+/* ---------- Placeholder ---------- */
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background:
+    repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      rgba(255, 26, 94, 0.025) 3px, rgba(255, 26, 94, 0.025) 6px
+    );
+}
+
+.ph-index {
+  font-size: 11px;
+  color: rgba(255, 26, 94, 0.4);
+  letter-spacing: 0.1em;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.ph-label {
+  font-size: 10px;
+  color: rgba(255, 26, 94, 0.35);
+  letter-spacing: 0.08em;
+}
+
+.ph-hint {
+  font-size: 9.5px;
+  color: rgba(255, 100, 150, 0.3);
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* ---------- Caption ---------- */
+.photo-caption {
+  font-size: 11px;
+  color: rgba(255, 180, 200, 0.6);
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 2px;
+}
+
+.caption-arrow {
+  color: #ff1a5e;
+  text-shadow: 0 0 4px #ff1a5e;
+}
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(3, 0, 8, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  animation: pageEnter 0.3s ease forwards;
+  cursor: zoom-out;
+  padding: 20px;
+}
+
+.lightbox img {
+  max-width: min(90vw, 700px);
+  max-height: 80vh;
+  object-fit: contain;
+  border: 1px solid rgba(255, 26, 94, 0.5);
+  box-shadow: 0 0 40px rgba(255, 26, 94, 0.3);
+}
+
+.lightbox-caption {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: rgba(255, 180, 200, 0.7);
+  letter-spacing: 0.07em;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: 1px solid rgba(255, 26, 94, 0.4);
+  color: rgba(255, 26, 94, 0.7);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  padding: 6px 12px;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition: all 0.2s;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 26, 94, 0.15);
+  color: #ff1a5e;
+  border-color: #ff1a5e;
+}
+
+/* ---------- Footer hint ---------- */
+.photos-footer {
+  font-size: 11px;
+  color: rgba(255, 100, 150, 0.3);
+  letter-spacing: 0.06em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
