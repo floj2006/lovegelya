@@ -8,6 +8,10 @@
   z-index: 2;
 }
 
+@media (max-height: 700px), (max-width: 400px) {
+  .main-page { align-items: flex-start; padding: 16px 0 32px; }
+}
+
 /* ---------- Card ---------- */
 .card {
   width: min(92vw, 620px);
@@ -501,6 +505,37 @@ h1::after {
   letter-spacing: 0.1em;
   opacity: 0;
   animation: idleTextIn 0.5s ease 3.8s forwards;
+}
+
+/* ══════════════════════════════
+   MOBILE
+══════════════════════════════ */
+@media (max-width: 480px) {
+  .card-inner       { padding: 22px 18px 20px; }
+  .last-login       { font-size: 10px; gap: 8px; }
+  .photo            { width: 76px; height: 76px; margin-bottom: 16px; }
+
+  h1 { letter-spacing: 0.12em; margin-bottom: 8px; }
+
+  .subtitle         { font-size: 11px; margin-bottom: 12px; }
+
+  .together-counter { flex-direction: column; gap: 4px; font-size: 11px; padding: 8px 10px; }
+
+  .love-meter       { flex-direction: column; gap: 3px; font-size: 11px; }
+  .love-bar         { font-size: 10px; letter-spacing: 0; }
+
+  .message          { font-size: 12px; padding: 10px 12px; margin-bottom: 14px; }
+
+  .reason-tag       { font-size: 11px; }
+
+  .action-row       { flex-direction: column; gap: 8px; }
+  .button           { font-size: 12px; padding: 10px 18px; width: 100%; justify-content: center; }
+  .button-secondary { font-size: 11px; }
+
+  .secret           { font-size: 12px; }
+  .error-hint       { font-size: 9px; margin-top: 10px; }
+  .status-bar       { font-size: 10px; padding: 6px 12px; }
+  .term-title       { font-size: 9px; letter-spacing: 0.08em; }
 }
 
 @keyframes idleTextIn {

@@ -10,9 +10,8 @@ body {
   min-height: 100vh;
   font-family: 'Share Tech Mono', 'Courier New', monospace;
   background: #050008;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   color: #ffb3cc;
 }
